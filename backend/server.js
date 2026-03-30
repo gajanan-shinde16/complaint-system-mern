@@ -4,6 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import complaintRoutes from "./routes/complaintRoutes.js";
+
 import roleMiddleware from "./middleware/roleMiddleware.js";
 import authMiddleware from "./middleware/authMiddleware.js";
 
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/complaints", complaintRoutes);
 
 app.get("/api/test/user", authMiddleware, (req, res) => {
   res.json({
